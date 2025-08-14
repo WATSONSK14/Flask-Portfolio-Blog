@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Ana Sayfa{% endblock title %}
+
+{% block content %}
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="" ></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='images/gallery_1.jpg') }}" class="d-block w-100" alt="Slide 1" style="height:500px; object-fit:cover;">
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Ready to join us?</h1>
+            <p>Secure your spot and become part of something bigger.</p>
+            <p><a class="btn btn-lg btn-primary" href="{{ url_for('register') }}">Join Us</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/gallery_2.jpg') }}" class="d-block w-100" alt="Slide 1" style="height:500px; object-fit:cover;">
+
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Explore More Projects</h1>
+            <p>Visit our GitHub and see what we’re building.</p>
+            <p><a class="btn btn-lg btn-primary" href="https://github.com/WATSONSK14?tab=repositories">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/gallery_3.jpg') }}" class="d-block w-100" alt="Slide 1" style="height:500px; object-fit:cover;">
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>Explore Our Gallery</h1>
+            <p>Check out the gallery for more visuals and creative ideas.</p>
+            <p><a class="btn btn-lg btn-primary" href="{{ url_for('gallery') }}">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+      <!-- Vote Post -->
+
+<div class="container text-center my-5" style="background-color:#ffffff; padding:30px; border-radius:10px;">
+  <h2 class="fw-bold" style="color:#0d6efd; font-size:2.5rem;">💻 Support Your Favorite Programming Language!</h2>
+  <p class="lead" style="color:#343a40; font-size:1.25rem;">Choose your favorite language below, cast your vote, and help shape the community’s opinion.</p>
+</div>
+
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      <!-- Python Post -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{url_for('static', filename='images/python.png')}}" class="card-img-top" width="100%" height="225" alt="Python Logo">
+          <div class="card-body">
+            <p class="card-text">Easy to learn, great for automation, data science, and AI.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <form method="POST" action="/">
+                <input type="hidden" name="post_id" value="1">
+                <div class="btn-group">
+                  <button type="submit" name="action" value="like" class="btn btn-sm btn-outline-secondary">👍 Like</button>
+                  <button type="submit" name="action" value="dislike" class="btn btn-sm btn-outline-secondary">👎 Dislike</button>
+                </div>
+              </form>
+              <small class="text-muted">Like {{ votes[0].like }} | Dislike {{ votes[0].dislike }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C++ Post -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{url_for('static', filename='images/c++.jpg')}}" class="card-img-top" width="100%" height="225" alt="C++ Logo">
+          <div class="card-body">
+            <p class="card-text">High performance, ideal for games, system software, and resource-intensive apps.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <form method="POST" action="/">
+                <input type="hidden" name="post_id" value="2">
+                <div class="btn-group">
+                  <button type="submit" name="action" value="like" class="btn btn-sm btn-outline-secondary">👍 Like</button>
+                  <button type="submit" name="action" value="dislike" class="btn btn-sm btn-outline-secondary">👎 Dislike</button>
+                </div>
+              </form>
+              <small class="text-muted">Like {{ votes[1].like }} | Dislike {{ votes[1].dislike }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JavaScript Post -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{{url_for('static', filename='images/js.jpg')}}" class="card-img-top" width="100%" height="225" alt="JS Logo">
+          <div class="card-body">
+            <p class="card-text">Runs in browsers, perfect for web apps, interactive UIs, and dynamic websites.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <form method="POST" action="/">
+                <input type="hidden" name="post_id" value="3">
+                <div class="btn-group">
+                  <button type="submit" name="action" value="like" class="btn btn-sm btn-outline-secondary">👍 Like</button>
+                  <button type="submit" name="action" value="dislike" class="btn btn-sm btn-outline-secondary">👎 Dislike</button>
+                </div>
+              </form>
+              <small class="text-muted">Like {{ votes[2].like }} | Dislike {{ votes[2].dislike }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

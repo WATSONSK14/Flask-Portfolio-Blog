@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Message Details{% endblock title %}
+{% block style %} <link rel="stylesheet" href="{{url_for('static',filename='css/user_panel.css')}}"> {% endblock style %}
+
+{% block content %}
+<div class="message-detail-container">
+    <div class="page-header">
+        <div class="back-button">
+            <a href="{{ url_for('panel_messages') }}" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Previous Page
+            </a>
+        </div>
+        <h1>Message Details</h1>
+        <p>View Message Details</p>
+    </div>
+
+    <div class="message-detail-card">
+        <div class="message-detail-header">
+            <div class="message-status-large">
+                {% if message.read %}
+                    <span class="status-badge active">
+                        <i class="fas fa-check-circle"></i> Replied
+                    </span>
+                {% else %}
+                    <span class="status-badge inactive">
+                        <i class="fas fa-clock"></i> Awaiting Response
+                    </span>
+                {% endif %}
+            </div>
+            <div class="message-date-large">
+                <i class="fas fa-calendar-alt"></i>
+                {{ message.created_at.strftime('%d.%m.%Y %H:%M') if message.created_at else 'Tarih belirtilmemiş' }}
+            </div>
+        </div>
+
+        <div class="message-detail-content">
+            <div class="detail-section">
+                <h3><i class="fas fa-envelope-open"></i> Subject</h3>
+                <div class="detail-value">{{ message.subject }}</div>
+            </div>
+
+            <div class="detail-section">
+                <h3><i class="fas fa-comment"></i> Content of the Message</h3>
+                <div class="detail-value message-text">{{ message.message }}</div>
+            </div>
+
+            <div class="detail-section">
+                <h3><i class="fas fa-user"></i> Sender Information</h3>
+                <div class="sender-info">
+                    <div class="info-row">
+                        <span class="info-label">Full Name:</span>
+                        <span class="info-value">{{ message.name }} {{ message.surname }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email Address:</span>
+                        <span class="info-value">{{ message.email }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Message ID:</span>
+                        <span class="info-value">#{{ message.id }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-detail-footer">
+            <div class="action-buttons">
+                <a href="{{ url_for('panel_messages') }}" class="btn btn-secondary">
+                    <i class="fas fa-list"></i> View All Messages
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> New Message
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

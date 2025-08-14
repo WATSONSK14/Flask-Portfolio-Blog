@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}User Panel{% endblock title %}
+{% block style %} 
+<link rel="stylesheet" href="{{url_for('static',filename='css/user_panel.css')}}"> 
+{% endblock style %}
+
+{% block content %}
+<div class="user-panel-container">
+    <div class="welcome-section">
+        <h1>Welcome, {{ current_user.username }}! 👋</h1>
+    </div>
+    
+    <div class="cards-grid">
+        <!-- User Information Card -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3>User Information</h3>
+            </div>
+            <div class="card-content">
+                <div class="info-item">
+                    <span class="label">Username:</span>
+                    <span class="value" title="{{ current_user.username }}">
+                        {{ current_user.username[:20] }}{% if current_user.username|length > 20 %}...{% endif %}
+                    </span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Email Address:</span>
+                    <span class="value email" title="{{ current_user.email }}">
+                        {{ current_user.email[:25] }}{% if current_user.email|length > 25 %}...{% endif %}
+                    </span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Registration Date:</span>
+                    <span class="value">{{ current_user.created_at.strftime('%d.%m.%Y') if current_user.created_at else 'Not specified' }}</span>
+                </div>
+            </div>
+            <div class="card-actions">
+                <form action="{{ url_for('user_detail') }}" method="POST">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Contact Card -->
+        <div class="info-card">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Contact</h3>
+            </div>
+            <div class="card-content">
+                <div class="info-item">
+                    <span class="label">Email Address:</span>
+                    <span class="value email" title="{{ current_user.email }}">
+                        {{ current_user.email[:25] }}{% if current_user.email|length > 25 %}...{% endif %}
+                    </span>
+                </div>
+                <div class="info-item">
+                    {% if messages %}
+                        <span class="label">Last Message:</span>
+                        <span class="value" title="{{messages[-1].subject}}">
+                            {{messages[-1].subject[:30] }}{% if messages[-1].subject|length > 30 %}...{% endif %}
+                        </span>
+                    {% else %}
+                        <span class="label">Last Message:</span>
+                        <span class="value">You have no messages</span>
+                    {% endif %}
+                </div>
+                <div class="info-item">
+                    <span class="label">Status:</span>
+                    {% if messages %}
+                        {% if messages[-1].read == False %}
+                            <span class="status-badge inactive">Awaiting Response</span>
+                        {% else %}
+                            <span class="status-badge active">Replied</span>
+                        {% endif %}
+                    {% else %}
+                        <span class="value">You have no messages</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-actions">
+                <form action="{{ url_for('panel_messages') }}" method="POST">
+                    <button type="submit" class="btn btn-primary">Messages</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Logout Card -->
+        <div class="info-card logout-card">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <h3>Logout</h3>
+            </div>
+            <div class="card-content">
+                <p class="logout-message">Do you want to securely log out of your account?</p>
+                <div class="info-item">
+                    <span class="label">Session Duration:</span>
+                    <span class="value">{{oturum_süresi}}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Last Login Session:</span>
+                    <span class="value">{{current_user.last_login.strftime("%d.%m.%Y %H:%M:%S") if current_user.last_login else 'First login'}}</span>
+                </div>
+            </div>
+            <div class="card-actions">
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
