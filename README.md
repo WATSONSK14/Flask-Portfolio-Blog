@@ -1,4 +1,4 @@
-# 🚀 Flask Web Portfolio & Social Platform
+# 🚀 Flask Web Portfolio
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Flask](https://img.shields.io/badge/Flask-2.3.2-green.svg)](https://flask.palletsprojects.com/)
@@ -251,15 +251,8 @@ Bu proje şu anda lisanssızdır. Kullanım izinleri için yazarla iletişime ge
 - **GitHub**: [@WATSONSK14](https://github.com/WATSONSK14)
 - **Website**: [Portfolio Project](https://github.com/WATSONSK14/flask-portfolio)
 
----
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=WATSONSK14/flask-portfolio&type=Date)](https://star-history.com/#WATSONSK14/flask-portfolio&Date)
-
----
 
 <div align="center">
-  <p>Made with ❤️ by <strong>Serhat Kutlu</strong></p>
+  <p>Made with ❤️ by <strong>WATSONSK14</strong></p>
   <p>💻 <strong>Flask Web Portfolio</strong></p>
 </div>
