@@ -249,7 +249,6 @@ Bu proje şu anda lisanssızdır. Kullanım izinleri için yazarla iletişime ge
 ## 📞 Contact
 
 - **GitHub**: [@WATSONSK14](https://github.com/WATSONSK14)
-- **Email**: serhat.kutlu@example.com
 - **Website**: [Portfolio Project](https://github.com/WATSONSK14/flask-portfolio)
 
 ---
@@ -262,5 +261,5 @@ Bu proje şu anda lisanssızdır. Kullanım izinleri için yazarla iletişime ge
 
 <div align="center">
   <p>Made with ❤️ by <strong>Serhat Kutlu</strong></p>
-  <p>💻 <strong>Flask Web Portfolio & Social Platform</strong></p>
+  <p>💻 <strong>Flask Web Portfolio</strong></p>
 </div>
