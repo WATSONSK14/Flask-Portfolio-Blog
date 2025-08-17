@@ -1,0 +1,89 @@
+<footer class="footer-modern">
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="{{ url_for('static', filename='images/Logo.png') }}" alt="Logo" class="footer-logo-img">
+          </div>
+          <p class="footer-description">
+            A modern and user-friendly professional portfolio platform 
+            Showcase your creativity and build connections.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h4 class="footer-title">
+            <i class="fas fa-link me-2"></i>Quick Links
+          </h4>
+          <ul class="footer-links">
+            <li><a href="{{ url_for('home') }}"><i class="fas fa-home me-2"></i>Home Page</a></li>
+            <li><a href="{{ url_for('about') }}"><i class="fas fa-user me-2"></i>About Me</a></li>
+            <li><a href="{{ url_for('gallery') }}"><i class="fas fa-images me-2"></i>Gallery</a></li>
+            <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope me-2"></i>Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h4 class="footer-title">
+            <i class="fas fa-address-card me-2"></i>Contact
+          </h4>
+          <div class="footer-contact">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>test@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+90 555 555 55 55</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>221B Baker Street, London, United Kingdom</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Media -->
+        <div class="footer-section">
+          <h4 class="footer-title">
+            <i class="fas fa-share-alt me-2"></i>Social Media
+          </h4>
+          <div class="social-icons">
+            <a href="https://github.com/WATSONSK14?tab=repositories" class="social-icon github">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-icon instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon linkedin">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="social-icon twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          © 2025 WATSONSK14. All rights reserved.
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">GDPR Compliance</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

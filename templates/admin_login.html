@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+{% block style %} <link rel="stylesheet" href="{{url_for('static',filename='css/form.css')}}"> {% endblock style %}
+{% block title %}@@@{% endblock title %}
+
+{% block content %}
+<div class="register-page">
+    <div class="form-wrapper">
+        {{ render_form(form) }}
+    </div>
+</div>
+{% endblock %}

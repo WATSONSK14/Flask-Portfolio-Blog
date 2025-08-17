@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}User Profile Information{% endblock title %}
+{% block style %} <link rel="stylesheet" href="{{url_for('static',filename='css/user_panel.css')}}"> {% endblock style %}
+
+{% block content %}
+<div class="user-detail-container">
+    <div class="page-header">
+        <div class="back-button">
+            <a href="{{ url_for('user_panel') }}" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Previous Page
+            </a>
+        </div>
+        <h1>User Profile Information</h1>
+        <p>View and Edit Account Information</p>
+    </div>
+
+    <div class="detail-form-container">
+        <form method="POST" class="detail-form">
+            <div class="form-section">
+                <h3><i class="fas fa-user-circle"></i> Basic Information</h3>
+                
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <div class="input-wrapper editable">
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               value="{{ current_user.username }}" 
+                               class="form-input editable-input"
+                               required>
+                        <div class="edit-indicator">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                    </div>
+                    <small class="form-help">You can change your username</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <div class="input-wrapper readonly">
+                        <input type="email" 
+                               value="{{ current_user.email }}" 
+                               class="form-input readonly-input"
+                               readonly>
+                        <div class="lock-indicator">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <small class="form-help">The email address cannot be changed for security reasons</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Registration Date</label>
+                    <div class="input-wrapper readonly">
+                        <input type="text" 
+                               value="{{ current_user.created_at.strftime('%d.%m.%Y %H:%M') if current_user.created_at else 'Belirtilmemiş' }}" 
+                               class="form-input readonly-input"
+                               readonly>
+                        <div class="lock-indicator">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <small class="form-help">The date your account was created</small>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-shield-alt"></i> Account Security</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Account Status</label>
+                    <div class="input-wrapper readonly">
+                        <input type="text" 
+                               value="Active" 
+                               class="form-input readonly-input"
+                               readonly>
+                        <div class="status-indicator active">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <small class="form-help">Your account is currently active</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Last Login</label>
+                    <div class="input-wrapper readonly">
+                        <input type="text" 
+                               value="{{ current_user.last_login.strftime('%d.%m.%Y %H:%M') if current_user.last_login else 'İlk giriş' }}" 
+                               class="form-input readonly-input"
+                               readonly>
+                        <div class="lock-indicator">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <small class="form-help">Last login time</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="input-wrapper readonly">
+                        <input type="password" 
+                               value="••••••••" 
+                               class="form-input readonly-input"
+                               readonly>
+                        <div class="lock-indicator">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <small class="form-help">For your security, the password cannot be changed or displayed</small>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-vote-yea"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">{{ uservote|length if uservote else 0 }}</div>
+                            <div class="stat-label">Vote</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">{{ like if like else 0 }}</div>
+                            <div class="stat-label">Like</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-thumbs-down"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">{{ dislike if dislike else 0 }}</div>
+                            <div class="stat-label">Dislike</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" name="action" value="save" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a href="{{ url_for('user_panel') }}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
